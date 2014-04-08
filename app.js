@@ -5,9 +5,10 @@
 
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
+var todo = require('./routes/todo');
 var http = require('http');
 var path = require('path');
+var db = require('./models')
 
 var app = express();
 
@@ -16,6 +17,8 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.favicon());
+app.use(express.json());       // to support JSON-encoded bodies
+app.use(express.urlencoded()); // to support URL-encoded bodies
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
@@ -28,8 +31,20 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/todos', todo.index);
+app.post('/todos', todo.create);
+app.put('/todos/:id', todo.update);
+app.delete('/todos/:id', todo.destroy);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+db
+  .sequelize
+  .sync()
+  .complete(function(err) {
+    if (err) {
+      throw err
+    } else {
+      http.createServer(app).listen(app.get('port'), function(){
+        console.log('Express server listening on port ' + app.get('port'))
+      })
+    }
+  })
