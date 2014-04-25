@@ -33,10 +33,14 @@ var TodoListView = Backbone.View.extend({
     },
     addTodo: function(e) {
         e.preventDefault();
-        this.collection.create({
-            value: e.target.elements[0].value
-        });
-        e.target.reset();
+        if(e.target.elements[0].value == '') {
+            alert('empty');
+        } else {
+            this.collection.create({
+                value: e.target.elements[0].value
+            });
+            e.target.reset();       
+        }
     },
     render: function() {
         var single = "is 1 thing",
