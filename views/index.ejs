@@ -3,29 +3,56 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/ionicons.css' />
   </head>
   <body>
-    
-    <div id="posts">
-      <form action="#">
-        <input type="text" name="title"><br>
-        <textarea name="content" id="" cols="30" rows="10"></textarea><br>
-        <input type="submit" id="add">
-      </form>
-      <div id="feed">
-        
+  
+    <div id="posts">      
+      <form action="#" id="addPostForm">
+        <h2>Create a new post</h2>
+        <label for="title">Title</label>
+        <input type="text" name="title">
+        <label for="content">Content</label>
+        <textarea name="content" rows="8"></textarea>
+        <input type="submit" value="Send  " id="add">
+      </form>      
+      <div id="feed">  
       </div>
     </div>
 
     <script id="posts-tpl" type="text/x-handlebars-template">
       {{#each items}}
-        <div>
-          <h2>{{ title }}</h2>
-          {{ content }}
-          <button data-id="{{id}}">Delete</button>
+        <div class="post">
+          <h2><a href="/#posts/{{id}}">{{ title }}</a></h2>
+          <p>{{ content }}</p>
+          <button class="remove" data-id="{{id}}">Delete</button>
+          <button class="edit">Edit</button>
         </div>
+        <form action="#" class="updatePostForm {{id}} hide">
+          <input type="text" name="updateTitle" value="{{title}}">
+          <textarea name="updateContent" rows="6">{{ content }}</textarea>
+          <input class="update" type="submit" value="Save" data-id="{{id}}">
+        </form>
       {{/each}}
     </script>
+
+    <div id="single-post">     
+      <div id="post">
+        
+      </div>
+    </div>
+
+    <script id="single-post-tpl" type="text/x-handlebars-template">  
+          <nav>
+            <a href="/" class="link-home"><i class="ion-home"></i></a>
+          </nav>
+          <h2>{{ item.title }}</h2>
+          <p>{{ item.content }}</p>
+          <p>Created at: {{ item.createdAt }}</p>
+          <p>Last uppdated at: {{ item.updatedAt }}</p>
+          <!--<button data-id="{{item.id}}">Delete</button>-->
+        </div>
+    </script>    
 
     <script src="/javascripts/jquery-1.11.0.js"></script>
     <script src="/javascripts/handlebars-v1.3.0.js"></script>

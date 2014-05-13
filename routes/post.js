@@ -1,10 +1,17 @@
 var db = require('../models')
 
 exports.index = function(req, res){
-  db.Post.findAll().success(function(posts) {
+  db.Post.findAll({order: 'createdAt DESC'}).success(function(posts) {
     console.log(posts);
     res.json(posts);
   })
+};
+
+exports.getpost = function(req, res) {
+  db.Post.find(req.params.id).success(function(post) {
+    console.log(post);
+    res.json(post);
+  });
 };
 
 exports.create = function(req, res){

@@ -1,13 +1,162 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	color: #333;	
 }
 
-a {
-  color: #00B7FF;
+
+/* ADD NEW POST FORM */
+
+#posts {
+	width: 960px;
+	margin: 0 auto;
+	padding: 50px 0 0 0;
 }
 
-#todo { padding: 20px; background: #eee;}
-#todo ul { padding: 0;}
-#todo li { list-style: none; margin:0}
-#todo li input { margin-right: 8px; }
+#addPostForm {
+	width: 40%;
+	margin: 0 auto;
+}
+
+#addPostForm h2 {
+	margin-bottom: 20px;
+}
+
+#addPostForm label {
+	font-weight: 800;
+}
+
+#addPostForm input,
+#addPostForm textarea {
+	width: 100%;
+	border: 1px solid #DFDFDF;
+	font-size: 100%;
+	margin: 5px 0 12px 0;
+	padding-left: 2px;
+}
+
+#addPostForm input[name=title] {
+	height: 25px;
+}
+
+#addPostForm input[type=submit] {
+	border: 1px solid #000;
+	background-color: #fff;
+	padding: 10px 0;
+	margin: 0;
+}
+
+/* POST LIST VIEW */
+
+#feed {
+	width: 40%;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+.post {
+	padding: 20px 0 20px 0;
+	overflow: hidden;
+}
+
+.post h2 {
+	text-transform: uppercase;
+	margin-bottom: 5px;
+}
+
+.post a {
+	text-decoration: none;
+	color: rgba(255, 90, 121, 1);
+}
+
+.post a:hover {
+	border-bottom: 2px solid;
+	transition: 0.2s ease;
+	color: rgba(255, 60, 121, 1);
+}
+
+.post p {
+	font-weight: 200;
+}
+
+.post button {
+	float: right;
+	border: none;
+	border-bottom: 1px dotted;
+	color: rgba(255, 90, 121, 1);;
+	background-color: #fff;
+	margin: 10px 0 0 8px;
+	cursor: pointer;
+}
+
+/* UPDATE FORM */
+
+.updatePostForm input,
+.updatePostForm textarea {
+	width: 100%;
+	border: 1px solid #DFDFDF;
+	font-size: 100%;
+	margin: 5px 0 12px 0;
+	padding-left: 2px;
+}
+
+.updatePostForm input[name=updateTitle] {
+	height: 25px;
+}
+
+.updatePostForm input[type=submit] {
+	border: 1px solid #000;
+	background-color: #fff;
+	padding: 10px 0;
+	margin: 0;
+}
+
+/* SINGEL POST VIEW */
+
+nav {
+	width: 480px;
+	margin: 0 auto;
+}
+
+nav a {
+	font-size: 60px;	
+	color: rgba(255, 90, 121, 1);
+	border: 1px solid rgba(255, 90, 121, 1);
+	position: relative;
+	padding: 10px 25px;
+	border-radius: 50px;
+	left: 50%;
+	margin-left: -48.5px;
+}
+
+nav a:hover {
+	transition: 0.2s ease;
+	color: rgba(255, 60, 121, 1);
+	border: 1px solid rgba(255, 60, 121, 1);
+}
+
+#single-post {
+	width: 960px;
+	margin: 0 auto;
+}
+
+#post {
+	width: 50%;
+	margin: 0 auto;
+}
+
+#post h2 {
+	font-size: 2em;
+	text-transform: uppercase;
+	margin: 50px 0 15px 0;
+}
+
+.hide {
+	display: none;
+}
+

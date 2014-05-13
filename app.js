@@ -32,9 +32,10 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/posts', post.index);
+app.get('/posts/:id', post.getpost);
 app.post('/posts', post.create);
 app.put('/posts/:id', post.update);
-app.delete('/:id', post.destroy);
+app.delete('/posts/:id', post.destroy);
 
 db
   .sequelize
