@@ -29,13 +29,14 @@ var PostsView = Backbone.View.extend({
     addPost: function(e) {
     	e.preventDefault();
     	if($('input[name=title]').val() == '' || $('textarea[name=content]').val() == '')
-    		console.log('empty');
-    	else {
+    		$('.error').addClass('show');
+    	else {        
 	    	this.collection.create({
 	    		title: $('#addPostForm input[name=title]').val(),
 	    		content: $('#addPostForm textarea[name=content]').val()
 	    	});	
-	    	e.target.reset();    		
+	    	e.target.reset();
+        $('.error').removeClass('show');    		
     	}
     },
 
@@ -75,14 +76,6 @@ var PostView = Backbone.View.extend({
       this.model.bind("add remove change", _.bind(this.render, this));  
     },
 
-/*    events: {
-      'click #post button' : 'deletePost'
-    },
-    deletePost: function(e) {
-      e.preventDefault();
-      this.model.destroy();
-      router.navigate('/', { trigger: true });
-    },*/
     template: Handlebars.compile(($("#single-post-tpl").html())),
     render: function() {
       html = this.template({

@@ -16,6 +16,7 @@
         <textarea name="content" rows="8"></textarea>
         <input type="submit" value="Send  " id="add">
       </form>      
+      <p class="error hide">All fields are mandatory!</p>
       <div id="feed">  
       </div>
     </div>
@@ -48,14 +49,17 @@
           </nav>
           <h2>{{ item.title }}</h2>
           <p>{{ item.content }}</p>
-          <p>Created at: {{ item.createdAt }}</p>
-          <p>Last uppdated at: {{ item.updatedAt }}</p>
-          <!--<button data-id="{{item.id}}">Delete</button>-->
+          <p class="updatedAt">Last uppdated at: <span class="timeStamp">{{ prettifyDate item.updatedAt }}</span></p>
         </div>
     </script>    
 
     <script src="/javascripts/jquery-1.11.0.js"></script>
     <script src="/javascripts/handlebars-v1.3.0.js"></script>
+    <script>
+      Handlebars.registerHelper("prettifyDate", function(timestamp) {
+        return new Date(timestamp).toString();
+      }); 
+    </script>
     <script src="/javascripts/underscore.js"></script>
     <script src="/javascripts/backbone.js"></script>
     <script src="/javascripts/post.js"></script>

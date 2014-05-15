@@ -51,12 +51,17 @@ body {
 	margin: 0;
 }
 
+.error {
+	margin: 10px 0 0 289px;
+	color: red;
+}
+
 /* POST LIST VIEW */
 
 #feed {
 	width: 40%;
 	margin: 0 auto;
-	margin-top: 30px;
+	margin-top: 50px;
 }
 
 .post {
@@ -156,7 +161,20 @@ nav a:hover {
 	margin: 50px 0 15px 0;
 }
 
+.updatedAt {
+	margin-top: 10px;
+	color: rgba(0, 0, 0, 0.6);
+}
+
+.timeStamp {
+	font-style: italic;
+}
+
 .hide {
 	display: none;
+}
+
+.show {
+	display: block;
 }
 
